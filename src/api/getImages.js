@@ -3,11 +3,11 @@ import axios from "axios";
 const CLIENT_ID = `YRbuNnP_yFZip_YLxfeMzrmUg5w-ryxVdxviuBVFc9Y`;
 
 const DEFAULT_QUERY_PARAMS = {
-    perPage: 30,
+    perPage: 60,
     pageNumber: 1,
     sortedBy: "popular",
   };
-  
+
 export async function getImages() {
   const images = await axios.get(`https://api.unsplash.com/photos`, {
     params: {
