@@ -1,23 +1,21 @@
-import logo from './galerie.svg';
-import './App.css';
-
-
-import Unsplash, { toJson } from 'unsplash-js';
-
-const unsplash = new Unsplash({
-  accessKey: APP_ACCESS_KEY,
-  // Optionally you can also configure a custom header to be sent with every request
-  headers: {
-    "X-Custom-Header": "foo"
-  },
-  // Optionally if using a node-fetch polyfill or a version of fetch which supports the timeout option, you can configure the request timeout for all requests
-  timeout: 500 // values set in ms
-});
+import * as React from "react";
+import logo from "./galerie.svg";
+import "./App.css";
 
 function App() {
+  const axios = require("axios");
 
+  const [images, setImages] = React.useState([]);
 
+  const handleButtonClick = async () => {
+    const images = await axios.get(
+      `https://api.unsplash.com/photos/?client_id=YRbuNnP_yFZip_YLxfeMzrmUg5w-ryxVdxviuBVFc9Y`
+    );
 
+    setImages(images.data);
+  };
+
+  console.log(images);
 
   return (
     <div className="App">
@@ -25,6 +23,14 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <h1>alerie</h1>
       </header>
+      {images.length > 0
+        ? images.map((image) => {
+            return <img src={image.urls.thumb} />;
+          })
+        : null}
+      <div>
+        <button onClick={handleButtonClick}>Get images</button>
+      </div>
     </div>
   );
 }
