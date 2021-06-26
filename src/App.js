@@ -23,11 +23,13 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <h1>alerie</h1>
       </header>
-      {images.length > 0
-        ? images.map((image) => {
-            return <img src={image.urls.thumb} />;
-          })
-        : null}
+      <div className="images_display">
+        {images.length > 0
+          ? images.map((image) => {
+              return <img src={image.urls.thumb} alt="" />;
+            })
+          : null}
+      </div>
       <div>
         <button onClick={handleButtonClick}>Get images</button>
       </div>
