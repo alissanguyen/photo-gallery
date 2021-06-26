@@ -1,19 +1,23 @@
 import * as React from "react";
 import logo from "./galerie.svg";
 import "./App.css";
+import { useEffect } from "react";
+import { getImages } from "./api/getImages";
+
+const options = {
+  perPage: 30,
+  pageNumber: 1,
+  sortedBy: "popular",
+};
 
 function App() {
-  const axios = require("axios");
-
   const [images, setImages] = React.useState([]);
 
-  const handleButtonClick = async () => {
-    const images = await axios.get(
-      `https://api.unsplash.com/photos/?client_id=YRbuNnP_yFZip_YLxfeMzrmUg5w-ryxVdxviuBVFc9Y`
-    );
-
-    setImages(images.data);
-  };
+  useEffect(() => {
+    getImages(options).then((newImages) => {
+      setImages(newImages);
+    });
+  }, []);
 
   console.log(images);
 
@@ -30,9 +34,7 @@ function App() {
             })
           : null}
       </div>
-      <div>
-        <button onClick={handleButtonClick}>Get images</button>
-      </div>
+      <div></div>
     </div>
   );
 }
