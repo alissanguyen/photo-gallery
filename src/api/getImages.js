@@ -1,13 +1,20 @@
 import axios from "axios";
 
+const CLIENT_ID = `YRbuNnP_yFZip_YLxfeMzrmUg5w-ryxVdxviuBVFc9Y`;
 
-export async function getImages(options) {
-  const images = await axios.get(
-    `https://api.unsplash.com/photos/?client_id=YRbuNnP_yFZip_YLxfeMzrmUg5w-ryxVdxviuBVFc9Y${
-      options ? `&per_page=${options.perPage}` : ""
-    }`
-  , {
-      
+const DEFAULT_QUERY_PARAMS = {
+    perPage: 30,
+    pageNumber: 1,
+    sortedBy: "popular",
+  };
+  
+export async function getImages() {
+  const images = await axios.get(`https://api.unsplash.com/photos`, {
+    params: {
+      per_page: DEFAULT_QUERY_PARAMS.perPage,
+      order_by: DEFAULT_QUERY_PARAMS.sortedBy,
+      client_id: CLIENT_ID,
+    },
   });
 
   return images.data;

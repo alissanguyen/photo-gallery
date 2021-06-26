@@ -4,17 +4,12 @@ import "./App.css";
 import { useEffect } from "react";
 import { getImages } from "./api/getImages";
 
-const options = {
-  perPage: 30,
-  pageNumber: 1,
-  sortedBy: "popular",
-};
 
 function App() {
   const [images, setImages] = React.useState([]);
 
   useEffect(() => {
-    getImages(options).then((newImages) => {
+    getImages().then((newImages) => {
       setImages(newImages);
     });
   }, []);
