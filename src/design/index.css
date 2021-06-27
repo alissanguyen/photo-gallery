@@ -19,24 +19,24 @@ body {
     linear-gradient(180deg, #ffffff 0%, #002a5a 100%),
     linear-gradient(
       225deg,
-      #0094ff 20%,
-      #bff4ed 45%,
-      #280f34 45%,
-      #280f34 70%,
-      #ff004e 70%,
-      #e41655 85%,
-      #b30753 85%,
-      #b30753 100%
+      #000000e8 20%,
+      rgb(5, 5, 5) 25%,
+      black 45%,
+      rgba(0, 0, 0, 0.829) 70%,
+      #000000 70%,
+      #0a0003 85%,
+      #000000 85%,
+      #000000 10%
     ),
     linear-gradient(
       135deg,
-      #0e0220 15%,
+      #0e0220 50%,
       #0e0220 35%,
-      #e40475 35%,
-      #e40475 60%,
-      #48e0e4 60%,
-      #48e0e4 68%,
-      #d7fbf6 68%,
+      #11020a 30%,
+      #000000 6%,
+      #00000070 60%,
+      #ffffffc0 68%,
+      #fdfdfd 8%,
       #1d1d1d 100%
     );
   background-blend-mode: overlay, overlay, overlay, darken, normal;

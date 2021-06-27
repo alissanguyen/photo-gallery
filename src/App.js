@@ -12,8 +12,10 @@ function App() {
 
   useEffect(() => {
     getImages(pageNumber).then((newImages) => {
-      newImages = images.concat(newImages);
-      setImages(newImages);
+      console.log(newImages);
+      setImages((prev) => {
+        return prev.concat(newImages);
+      });
     });
   }, [pageNumber]);
 
