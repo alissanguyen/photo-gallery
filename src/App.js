@@ -1,6 +1,6 @@
 import * as React from "react";
-import logo from "./galerie.svg";
-import "./App.css";
+import logo from "./design/galerie.svg";
+import "./design/App.css";
 import { useEffect } from "react";
 import { getImages } from "./api/getImages";
 import Masonry from "react-masonry-css";
@@ -8,11 +8,14 @@ import Masonry from "react-masonry-css";
 function App() {
   const [images, setImages] = React.useState([]);
 
+  const [pageNumber, setPageNumber] = React.useState(1);
+
   useEffect(() => {
-    getImages().then((newImages) => {
+    getImages(pageNumber).then((newImages) => {
+      newImages = images.concat(newImages);
       setImages(newImages);
     });
-  }, []);
+  }, [pageNumber]);
 
   console.log(images);
 
@@ -47,7 +50,15 @@ function App() {
             })
           : null}
       </Masonry>
-      <div></div>
+
+      <div id="button_container">
+        <button
+          onClick={() => setPageNumber((prev) => prev + 1)}
+          class="load_more_button"
+        >
+          Load More
+        </button>
+      </div>
     </div>
   );
 }
