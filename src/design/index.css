@@ -19,25 +19,25 @@ body {
     linear-gradient(180deg, #ffffff 0%, #002a5a 100%),
     linear-gradient(
       225deg,
-      #000000e8 20%,
-      rgb(5, 5, 5) 25%,
-      black 45%,
-      rgba(0, 0, 0, 0.829) 70%,
-      #000000 70%,
-      #0a0003 85%,
-      #000000 85%,
-      #000000 10%
+      #ff1c1ce8 20%,
+      rgba(255, 0, 0, 0.692) 25%,
+      white 45%,
+      rgba(129, 19, 255, 0.61) 30%,
+      #ffffff 70%,
+      #1f042048 85%,
+      #ffffff 85%,
+      #ffffff 10%
     ),
     linear-gradient(
       135deg,
-      #0e0220 50%,
-      #0e0220 35%,
-      #11020a 30%,
-      #000000 6%,
-      #00000070 60%,
-      #ffffffc0 68%,
-      #fdfdfd 8%,
-      #1d1d1d 100%
+      #ffffff 50%,
+      #9e5b5b 35%,
+      #fffcfe 30%,
+      #ffffff 6%,
+      #ffe3e3 60%,
+      #f06767c0 68%,
+      #f35454 48%,
+      #ffffff 100%
     );
   background-blend-mode: overlay, overlay, overlay, darken, normal;
   background-attachment: fixed;
@@ -61,8 +61,7 @@ code {
   background-clip: padding-box;
 }
 
-/* Style your items */
 .my-masonry-grid_column > div {
-  /* change div to reference your elements you put in <Masonry> */
+  /* change div to reference elements in <Masonry> */
   margin-bottom: 20px;
 }
