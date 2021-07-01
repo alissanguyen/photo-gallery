@@ -1,8 +1,7 @@
 import * as React from "react";
-import { queryImages } from "../api/queryImages";
 import logo from "../design/galerie.svg";
 
-const SearchBar = () => {
+function SearchBar(props) {
   const [searchInput, setSearchInput] = React.useState("");
 
   return (
@@ -11,14 +10,21 @@ const SearchBar = () => {
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="app_name">alerie</h1>
       </div>
-      <input
-        placeholder="Search for keywords..     Ex: cats"
-        className="search_bar_input"
-        onChange={(value) => setSearchInput(value)}
-        onSubmit={queryImages(searchInput)}
-      ></input>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          props.onSubmit(searchInput);
+        }}
+      >
+        <input
+          placeholder="Search for keywords..     Ex: cats"
+          className="search_bar_input"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        ></input>
+      </form>
     </div>
   );
-};
+}
 
 export default SearchBar;

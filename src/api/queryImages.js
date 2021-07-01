@@ -10,17 +10,14 @@ const DEFAULT_SEARCHBAR_PARAMS = {
 };
 
 export async function queryImages(searchTerm) {
-  const searchResults = await axios.get(
-    `${BASE_UNSPLASH_URL}/search/collections`,
-    {
-      params: {
-        query: DEFAULT_SEARCHBAR_PARAMS.searchTerm,
-        per_page: DEFAULT_SEARCHBAR_PARAMS.perPage,
-        page: DEFAULT_SEARCHBAR_PARAMS.page,
-        client_id: CLIENT_ID,
-      },
-    }
-  );
-    console.log("query images!")
-  return searchResults;
+  const searchResults = await axios.get(`${BASE_UNSPLASH_URL}/search/photos`, {
+    params: {
+      query: searchTerm,
+      per_page: DEFAULT_SEARCHBAR_PARAMS.perPage,
+      page: DEFAULT_SEARCHBAR_PARAMS.page,
+      client_id: CLIENT_ID,
+    },
+  });
+  console.log("query images!");
+  return searchResults.data.results;
 }

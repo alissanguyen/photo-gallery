@@ -3,9 +3,9 @@ import * as React from "react";
 import "./design/App.css";
 import { useEffect } from "react";
 import { getImages } from "./api/getImages";
+import { queryImages } from "./api/queryImages";
 import Masonry from "react-masonry-css";
 import SearchBar from "./components/TopBar";
-
 
 function App() {
   const [images, setImages] = React.useState([]);
@@ -31,10 +31,19 @@ function App() {
     300: 1,
   };
 
+
   return (
-    
     <div className="App">
-      <SearchBar className="search_bar"/>
+      <SearchBar
+        onSubmit={(searchInput) => {
+          queryImages(searchInput).then((result) => {
+            console.log(result);
+            setImages(result);
+          });
+        }}
+      />
+
+      
       <Masonry
         breakpointCols={breakpointForMasonryLayout}
         className="my-masonry-grid"
@@ -44,7 +53,7 @@ function App() {
           ? images.map((image) => {
               return (
                 <div>
-                  <a href={image.links.html}> 
+                  <a href={image.links.html}>
                     <img src={image.urls.small} alt={image.alt_description} />
                   </a>
                 </div>
